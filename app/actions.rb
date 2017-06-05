@@ -16,7 +16,7 @@ get '/posts/:id' do
 end
 
 get '/' do
-    #@posts = Post.where("likes > 2")
+    #@posts = Post.all
     
     @posts = [{
         username: "sharky_j",
