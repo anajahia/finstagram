@@ -16,7 +16,9 @@ get '/posts/:id' do
 end
 
 get '/' do
-    @post_shark = {
+    #@posts = Post.where("likes > 2")
+    
+    @posts = [{
         username: "sharky_j",
         avatar_url: "http://naserca.com/images/sharky_j.jpg",
         photo_url: "http://naserca.com/images/shark.jpg",
@@ -27,10 +29,7 @@ get '/' do
            username: "sharky_j",
            text: "Out for thr long weekend... too embarrassed to show ya'll the beach bod!"
         }]
-    }
-    
-    
-    @post_whale = {
+    },{
         username: "kirk_walum",
         avatar_url: "http://naserca.com/images/kirk_whalum.jpg",
         photo_url: "http://naserca.com/images/whale.jpg",
@@ -41,9 +40,7 @@ get '/' do
             username: "kirk_walum",
             text: "#weekendvibes"
         }]
-    }
-    
-    @post_marlin = {
+    },{
         username: "marlin_peppa",
         avatar_url: "http://naserca.com/images/marlin_peppa.jpg",
         photo_url: "http://naserca.com/images/marlin.jpg",
@@ -54,11 +51,7 @@ get '/' do
             username: "marlin_peppa",
             text: "lunchtime! ;)" 
         }]
-    }
+    }]
     
-    # erb :index, :locals => { posts:  [post_shark, post_whale, post_marlin] }
-    
-    @posts = [@post_shark, @post_whale, @post_marlin]
-
-    erb :index, locals: { cat: "butt" }
+    erb :index
 end
