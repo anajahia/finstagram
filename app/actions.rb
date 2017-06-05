@@ -16,9 +16,9 @@ get '/posts/:id' do
 end
 
 get '/' do
-    #@posts = Post.all
+    @posts = Post.all
     
-    @posts = [{
+    @old_posts = [{
         username: "sharky_j",
         avatar_url: "http://naserca.com/images/sharky_j.jpg",
         photo_url: "http://naserca.com/images/shark.jpg",
