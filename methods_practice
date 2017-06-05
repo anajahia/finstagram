@@ -1,0 +1,11 @@
+@time = "morning"
+def greeting
+time = "morning"
+    if @time time == 'morning'
+        puts "Good Morning"
+    else
+        puts "Good Evening"
+    end
+end
+greeting('morning')
+greeting(afternoon')
