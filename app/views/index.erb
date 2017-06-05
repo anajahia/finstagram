@@ -22,12 +22,11 @@
   
         <ul class="comments">
           <li>
-            <p>
-              <%= post[:comments][0][:username] %>: <%= post[:comments][0][:text] %>
-            </p>
-            <p>
-              loveless_cuttlefish95: Your fin is tiny! Dweeb! rofl (rolling on my fin laughing)
-            </p>
+            <% post[:comments].each do |comment| %>
+              <p>
+                <%= comment[:username] %>: <%= comment[:text] %>
+              </p>
+            <% end %>
           </li>
         </ul>
       </article>

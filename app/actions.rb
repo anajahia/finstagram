@@ -50,6 +50,9 @@ get '/' do
         comments: [{
             username: "marlin_peppa",
             text: "lunchtime! ;)" 
+        }, {
+            username: "loveless_cuttlefish95",
+            text: "Your fin is tiny! Dweeb! rofl (rolling on my fin laughing)"
         }]
     }]
     
