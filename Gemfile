@@ -13,6 +13,7 @@ gem 'puma'
 gem 'tux'
 
 group :development, :test do
+  gem 'rb-readline'
   gem 'pry'
   gem 'shotgun'
   gem 'sqlite3'
