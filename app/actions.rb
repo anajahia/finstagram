@@ -3,6 +3,7 @@ helpers do
         User.find_by(id: session[:user_id])
     end
 end
+
 require "sinatra"
 require "haml"
 
@@ -24,7 +25,8 @@ get '/users' do
 end
 
 post '/signup' do
-    @user = User.new(params)
+  begin
+    @user = User.new(params.slice(:email, :avatar_url, :username, :password))
     
     # if user validations pass and user is saved
     if @user.save
@@ -32,6 +34,9 @@ post '/signup' do
     else
         erb(:signup)
     end
+  rescue
+    binding.pry
+  end
 end
 
 get '/login' do
@@ -59,6 +64,7 @@ get '/logout' do
     redirect to('/')
 end
 
+
 get '/admin' do
     haml(:admin)
 end
@@ -78,8 +84,3 @@ post '/posts' do
         @post.errors.full_messgae.inspect
     end
 end
-
-
-
-
-
