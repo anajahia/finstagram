@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
     belongs_to :user
     has_many :comments
     has_many :likes
+    validates_presence_of :user_id
     
     def humanized_time_ago
         time_ago_in_seconds = Time.now - self.created_at
@@ -13,7 +14,8 @@ class Post < ActiveRecord::Base
         else
             "#{time_ago_in_minutes.to_i} minutes ago"
         end
-        
+    end
+
     def like_count
         self.likes.size
     end
@@ -21,5 +23,5 @@ class Post < ActiveRecord::Base
     def comment_count
         self.comments.size
     end
-    end
+    
 end
