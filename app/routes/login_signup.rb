@@ -3,12 +3,6 @@ get '/signup' do
   erb(:signup)
 end
 
-
-get '/users' do
-  @users = User.all
-  erb(:users)
-end
-
 post '/signup' do
   @user = User.new(params.slice(:email, :avatar_url, :username, :password))
   
@@ -45,3 +39,10 @@ get '/logout' do
   session[:user_id] = nil
   redirect to('/')
 end
+
+
+get '/users' do
+  @users = User.all
+  erb(:users)
+end
+

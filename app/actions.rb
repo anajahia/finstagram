@@ -7,6 +7,7 @@ end
 require "pry"
 require "sinatra"
 require "slim"
+
 require "require_all"
 require_all("app/routes/*.rb")
 
@@ -18,23 +19,4 @@ get '/' do
         nil
     end
     slim(:index)
-end
-
-
-
-
-get '/posts/new' do
-    erb(:"posts/new")
-end
-
-post '/posts' do
-    photo_url = params[:photo_url]
-    
-    @post = Post.new({ photo_url: photo_url, user_id: @current_user.id })
-    
-    if @post.save  
-        redirect(to('/'))
-    else
-        @post.errors.full_messgae.inspect
-    end
 end
