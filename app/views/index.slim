@@ -1,0 +1,30 @@
+header
+  h1 finstagram (on slim)
+  .login-info
+    - if @current_user
+      = @current_user.username
+      a href="/logout"  Logout
+    - else
+      a href="/login"  Login
+      a href="/signup"  Signup
+main role="main" 
+  - @posts.each do |post|
+    article.post
+      .user-info
+        img alt="#{post.user.username}" src="#{post.user.avatar_url}" /
+        h2= post.user.username
+        h3= post.humanized_time_ago
+      a.photo href="#" 
+        img alt=("post from #{post.user.username}") src="#{post.photo_url}" /
+      .actions
+        = post.like_count
+        | likes
+        span.comment-count
+          = post.comment_count
+          | comment
+      ul.comments
+        - post.comments.each do |comment|
+          li
+            p
+              = comment.user.username
+              | \: #{comment.text}

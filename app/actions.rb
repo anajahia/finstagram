@@ -5,11 +5,17 @@ helpers do
 end
 
 require "sinatra"
-require "haml"
+require "slim"
+
 
 get '/' do
-   @posts = Post.order(created_at: :desc) 
-    erb(:index)
+   @posts = Post.order(created_at: :desc)
+    @current_user = if session[:user_id]
+            User.find(session[:user_id])
+    else
+        nil
+    end
+    slim(:index)
 end
 
 
@@ -76,7 +82,7 @@ end
 post '/posts' do
     photo_url = params[:photo_url]
     
-    @post = Post.new({ photo_url: photo_url, user_id: current_user.id })
+    @post = Post.new({ photo_url: photo_url, user_id: @current_user.id })
     
     if @post.save  
         redirect(to('/'))
