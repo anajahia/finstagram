@@ -4,9 +4,11 @@ helpers do
     end
 end
 
+require "pry"
 require "sinatra"
 require "slim"
-
+require "require_all"
+require_all("app/routes/*.rb")
 
 get '/' do
    @posts = Post.order(created_at: :desc)
@@ -70,10 +72,6 @@ get '/logout' do
     redirect to('/')
 end
 
-
-get '/admin' do
-    haml(:admin)
-end
 
 get '/posts/new' do
     erb(:"posts/new")

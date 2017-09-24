@@ -11,6 +11,7 @@ gem 'slim'
 gem 'awesome_print'
 gem 'puma'
 gem 'tux'
+gem 'require_all'
 
 group :development, :test do
   gem 'rb-readline'
